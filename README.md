@@ -168,3 +168,13 @@ python scripts/generate_trending.py
 ```
 
 可选：设置 `GH_TOKEN` 或 `GITHUB_TOKEN` 以提高 GitHub API 额度。
+
+## 本地自动同步
+
+GitHub Actions 会在远程仓库自动生成报告；如果希望本机也每周自动同步最新报告，可以在 Windows PowerShell 中运行：
+
+```powershell
+.\scripts\register_windows_task.ps1
+```
+
+默认会注册一个 Windows 计划任务：每周一 `09:15` 执行 `git pull --ff-only`，把远程生成的 `README.md` 和 `reports/YYYY-MM-DD.md` 同步到本地。
