@@ -109,10 +109,10 @@ def infer_profile(repo: dict, category: str) -> tuple[str, str]:
     topics = [str(topic).lower() for topic in repo.get("topics", [])]
     haystack = " ".join([description.lower(), language.lower(), category.lower(), *topics])
 
-    if any(key in haystack for key in ["llm", "ai", "agent", "rag", "chatgpt", "model", "inference"]):
+    if category == "AI / LLM" or "ai" in topics or any(key in haystack for key in ["llm", "agent", "rag", "chatgpt", "model", "inference"]):
         feature = "围绕 AI/LLM 能力构建，重点解决模型调用、智能体编排、知识检索、推理服务或自动化工作流等问题。"
         scenario = "适合用于智能助手、企业知识库、研发自动化、AI 原型验证、模型应用集成等场景。"
-    elif any(key in haystack for key in ["cli", "developer", "devtools", "tool", "terminal", "debug"]):
+    elif any(key in haystack for key in ["cli", "developer", "devtools", "tool", "terminal", "debug", "language server", "type checker", "linter", "formatter", "compiler"]):
         feature = "面向开发者效率提升，通常提供命令行工具、调试辅助、工程自动化、代码生成或本地开发体验优化。"
         scenario = "适合用于团队研发流程、CI/CD 辅助、本地开发提效、代码质量治理和工程脚手架建设。"
     elif any(key in haystack for key in ["react", "vue", "frontend", "ui", "css", "nextjs", "component"]):

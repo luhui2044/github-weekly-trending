@@ -112,13 +112,17 @@ function Get-RepoProfile {
     }
     $haystack = "$description $($language.ToLower()) $($Category.ToLower()) $topicText"
 
-    if (Test-AnyKeyword -Text $haystack -Keywords @("llm", "ai", "agent", "rag", "chatgpt", "model", "inference")) {
+    $isAiTopic = $false
+    if ($Repo.topics) {
+        $isAiTopic = @($Repo.topics) -contains "ai"
+    }
+    if ($Category -eq "AI / LLM" -or $isAiTopic -or (Test-AnyKeyword -Text $haystack -Keywords @("llm", "agent", "rag", "chatgpt", "model", "inference"))) {
         return @{
             Feature = "围绕 AI/LLM 能力构建，重点解决模型调用、智能体编排、知识检索、推理服务或自动化工作流等问题。"
             Scenario = "适合用于智能助手、企业知识库、研发自动化、AI 原型验证、模型应用集成等场景。"
         }
     }
-    if (Test-AnyKeyword -Text $haystack -Keywords @("cli", "developer", "devtools", "tool", "terminal", "debug")) {
+    if (Test-AnyKeyword -Text $haystack -Keywords @("cli", "developer", "devtools", "tool", "terminal", "debug", "language server", "type checker", "linter", "formatter", "compiler")) {
         return @{
             Feature = "面向开发者效率提升，通常提供命令行工具、调试辅助、工程自动化、代码生成或本地开发体验优化。"
             Scenario = "适合用于团队研发流程、CI/CD 辅助、本地开发提效、代码质量治理和工程脚手架建设。"
