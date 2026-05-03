@@ -28,9 +28,9 @@ REPORTS_DIR = ROOT / "reports"
 
 CATEGORIES = [
     ("AI / LLM", "topic:ai OR topic:llm OR topic:generative-ai"),
-    ("Developer Tools", "topic:developer-tools OR topic:cli OR topic:devtools"),
-    ("Frontend", "topic:frontend OR topic:react OR topic:vue OR topic:nextjs"),
-    ("Backend", "topic:backend OR topic:api OR topic:server"),
+    ("开发者工具", "topic:developer-tools OR topic:cli OR topic:devtools"),
+    ("前端", "topic:frontend OR topic:react OR topic:vue OR topic:nextjs"),
+    ("后端", "topic:backend OR topic:api OR topic:server"),
     ("Python", "language:Python"),
     ("Go", "language:Go"),
     ("Rust", "language:Rust"),
@@ -45,6 +45,7 @@ SAMPLE_REPOS = [
         "forks_count": 678,
         "language": "Python",
         "pushed_at": "2026-05-03T00:00:00Z",
+        "topics": ["ai", "developer-tools"],
     },
     {
         "full_name": "example/fast-web-framework",
@@ -54,6 +55,7 @@ SAMPLE_REPOS = [
         "forks_count": 321,
         "language": "Rust",
         "pushed_at": "2026-05-02T00:00:00Z",
+        "topics": ["web", "framework"],
     },
 ]
 
@@ -96,16 +98,61 @@ def search_repositories(query: str, limit: int) -> list[dict]:
     return payload.get("items", [])[:limit]
 
 
-def repo_line(repo: dict) -> str:
+def clean_text(value: str | None, fallback: str = "暂无项目描述。") -> str:
+    text = value or fallback
+    return " ".join(text.split())
+
+
+def infer_profile(repo: dict, category: str) -> tuple[str, str]:
+    description = clean_text(repo.get("description"), "")
+    language = repo.get("language") or "Unknown"
+    topics = [str(topic).lower() for topic in repo.get("topics", [])]
+    haystack = " ".join([description.lower(), language.lower(), category.lower(), *topics])
+
+    if any(key in haystack for key in ["llm", "ai", "agent", "rag", "chatgpt", "model", "inference"]):
+        feature = "围绕 AI/LLM 能力构建，重点解决模型调用、智能体编排、知识检索、推理服务或自动化工作流等问题。"
+        scenario = "适合用于智能助手、企业知识库、研发自动化、AI 原型验证、模型应用集成等场景。"
+    elif any(key in haystack for key in ["cli", "developer", "devtools", "tool", "terminal", "debug"]):
+        feature = "面向开发者效率提升，通常提供命令行工具、调试辅助、工程自动化、代码生成或本地开发体验优化。"
+        scenario = "适合用于团队研发流程、CI/CD 辅助、本地开发提效、代码质量治理和工程脚手架建设。"
+    elif any(key in haystack for key in ["react", "vue", "frontend", "ui", "css", "nextjs", "component"]):
+        feature = "聚焦前端界面与交互开发，常见特点是组件化、工程化、可视化呈现或现代 Web 应用体验优化。"
+        scenario = "适合用于管理后台、SaaS 产品、官网、可视化大屏、交互式工具和前端组件库建设。"
+    elif any(key in haystack for key in ["api", "server", "backend", "database", "cloud", "kubernetes", "microservice"]):
+        feature = "偏向后端服务与基础设施能力，通常关注 API、数据处理、服务治理、云原生部署或系统性能。"
+        scenario = "适合用于业务后端、平台服务、微服务治理、数据接口、云原生应用和企业级系统集成。"
+    elif language == "Go":
+        feature = "以 Go 语言实现，通常强调高并发、部署简单、性能稳定和服务端工程实践。"
+        scenario = "适合用于后端服务、网络工具、云原生组件、运维平台和高性能命令行工具。"
+    elif language == "Rust":
+        feature = "以 Rust 语言实现，通常强调内存安全、运行性能、可靠性和系统级能力。"
+        scenario = "适合用于系统工具、性能敏感服务、开发者工具、嵌入式或安全要求较高的工程。"
+    elif language == "Python":
+        feature = "以 Python 生态为主，通常便于快速实验、自动化脚本、数据处理、AI 应用或服务原型开发。"
+        scenario = "适合用于数据分析、机器学习、自动化任务、后端脚本、研究原型和内部效率工具。"
+    else:
+        feature = "该项目近期热度较高，主要价值可从仓库描述、语言生态、活跃度和社区关注度进一步判断。"
+        scenario = "适合先作为技术调研对象，用于评估是否能引入到个人项目、团队工具链或产品原型中。"
+
+    return feature, scenario
+
+
+def repo_block(repo: dict, category: str) -> list[str]:
     name = repo.get("full_name", "unknown/repo")
     url = repo.get("html_url", "")
-    description = repo.get("description") or "No description."
-    description = " ".join(description.split())
+    description = clean_text(repo.get("description"))
     stars = repo.get("stargazers_count", 0)
     forks = repo.get("forks_count", 0)
     language = repo.get("language") or "Unknown"
     pushed_at = (repo.get("pushed_at") or "")[:10]
-    return f"- [{name}]({url}) - {description} `★ {stars}` `forks {forks}` `{language}` `pushed {pushed_at}`"
+    feature, scenario = infer_profile(repo, category)
+    return [
+        f"- [{name}]({url})",
+        f"  - 项目描述：{description}",
+        f"  - 功能特点：{feature}",
+        f"  - 典型场景：{scenario}",
+        f"  - 热度指标：`stars {stars}` `forks {forks}` `{language}` `最近推送 {pushed_at}`",
+    ]
 
 
 def collect_report(days: int, limit: int, sample: bool) -> dict[str, dict[str, list[dict]]]:
@@ -135,18 +182,21 @@ def render_markdown(report: dict[str, dict[str, list[dict]]], days: int, generat
         f"统计窗口：最近 `{days}` 天",
         "",
         "说明：`新晋热门` 按最近创建且 star 较高的仓库排序；`活跃热门` 按最近推送且总 star 较高的仓库排序。",
+        "每个项目的功能特点和典型场景由仓库描述、语言和 topic 规则化归纳生成，用于快速筛选，深度采用前建议继续查看源码和文档。",
         "",
     ]
 
     for category, groups in report.items():
         lines.extend([f"## {category}", "", "### 新晋热门", ""])
         if groups["new"]:
-            lines.extend(repo_line(repo) for repo in groups["new"])
+            for repo in groups["new"]:
+                lines.extend(repo_block(repo, category))
         else:
             lines.append("- 暂无匹配项目。")
         lines.extend(["", "### 活跃热门", ""])
         if groups["active"]:
-            lines.extend(repo_line(repo) for repo in groups["active"])
+            for repo in groups["active"]:
+                lines.extend(repo_block(repo, category))
         else:
             lines.append("- 暂无匹配项目。")
         lines.append("")

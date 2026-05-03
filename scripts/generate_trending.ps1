@@ -1,4 +1,4 @@
-param(
+﻿param(
     [int]$Days = 7,
     [int]$Limit = 5,
     [switch]$Sample
@@ -12,9 +12,9 @@ $ReportsDir = Join-Path $Root "reports"
 
 $Categories = @(
     @{ Name = "AI / LLM"; Query = "topic:ai OR topic:llm OR topic:generative-ai" },
-    @{ Name = "Developer Tools"; Query = "topic:developer-tools OR topic:cli OR topic:devtools" },
-    @{ Name = "Frontend"; Query = "topic:frontend OR topic:react OR topic:vue OR topic:nextjs" },
-    @{ Name = "Backend"; Query = "topic:backend OR topic:api OR topic:server" },
+    @{ Name = "开发者工具"; Query = "topic:developer-tools OR topic:cli OR topic:devtools" },
+    @{ Name = "前端"; Query = "topic:frontend OR topic:react OR topic:vue OR topic:nextjs" },
+    @{ Name = "后端"; Query = "topic:backend OR topic:api OR topic:server" },
     @{ Name = "Python"; Query = "language:Python" },
     @{ Name = "Go"; Query = "language:Go" },
     @{ Name = "Rust"; Query = "language:Rust" }
@@ -29,6 +29,7 @@ $SampleRepos = @(
         forks_count = 678
         language = "Python"
         pushed_at = "2026-05-03T00:00:00Z"
+        topics = @("ai", "developer-tools")
     },
     [pscustomobject]@{
         full_name = "example/fast-web-framework"
@@ -38,6 +39,7 @@ $SampleRepos = @(
         forks_count = 321
         language = "Rust"
         pushed_at = "2026-05-02T00:00:00Z"
+        topics = @("web", "framework")
     }
 )
 
@@ -69,14 +71,103 @@ function Search-Repositories {
     return @($result.items | Select-Object -First $Top)
 }
 
-function Format-RepoLine {
-    param($Repo)
-
-    $description = $Repo.description
-    if (-not $description) {
-        $description = "No description."
+function Clean-Text {
+    param(
+        [string]$Text,
+        [string]$Fallback = "暂无项目描述。"
+    )
+    if (-not $Text) {
+        $Text = $Fallback
     }
-    $description = ($description -replace "\s+", " ").Trim()
+    return (($Text -replace "\s+", " ").Trim())
+}
+
+function Test-AnyKeyword {
+    param(
+        [string]$Text,
+        [string[]]$Keywords
+    )
+    foreach ($keyword in $Keywords) {
+        if ($Text.Contains($keyword)) {
+            return $true
+        }
+    }
+    return $false
+}
+
+function Get-RepoProfile {
+    param(
+        $Repo,
+        [string]$Category
+    )
+
+    $description = (Clean-Text -Text $Repo.description -Fallback "").ToLower()
+    $language = $Repo.language
+    if (-not $language) {
+        $language = "Unknown"
+    }
+    $topicText = ""
+    if ($Repo.topics) {
+        $topicText = ($Repo.topics -join " ").ToLower()
+    }
+    $haystack = "$description $($language.ToLower()) $($Category.ToLower()) $topicText"
+
+    if (Test-AnyKeyword -Text $haystack -Keywords @("llm", "ai", "agent", "rag", "chatgpt", "model", "inference")) {
+        return @{
+            Feature = "围绕 AI/LLM 能力构建，重点解决模型调用、智能体编排、知识检索、推理服务或自动化工作流等问题。"
+            Scenario = "适合用于智能助手、企业知识库、研发自动化、AI 原型验证、模型应用集成等场景。"
+        }
+    }
+    if (Test-AnyKeyword -Text $haystack -Keywords @("cli", "developer", "devtools", "tool", "terminal", "debug")) {
+        return @{
+            Feature = "面向开发者效率提升，通常提供命令行工具、调试辅助、工程自动化、代码生成或本地开发体验优化。"
+            Scenario = "适合用于团队研发流程、CI/CD 辅助、本地开发提效、代码质量治理和工程脚手架建设。"
+        }
+    }
+    if (Test-AnyKeyword -Text $haystack -Keywords @("react", "vue", "frontend", "ui", "css", "nextjs", "component")) {
+        return @{
+            Feature = "聚焦前端界面与交互开发，常见特点是组件化、工程化、可视化呈现或现代 Web 应用体验优化。"
+            Scenario = "适合用于管理后台、SaaS 产品、官网、可视化大屏、交互式工具和前端组件库建设。"
+        }
+    }
+    if (Test-AnyKeyword -Text $haystack -Keywords @("api", "server", "backend", "database", "cloud", "kubernetes", "microservice")) {
+        return @{
+            Feature = "偏向后端服务与基础设施能力，通常关注 API、数据处理、服务治理、云原生部署或系统性能。"
+            Scenario = "适合用于业务后端、平台服务、微服务治理、数据接口、云原生应用和企业级系统集成。"
+        }
+    }
+    if ($language -eq "Go") {
+        return @{
+            Feature = "以 Go 语言实现，通常强调高并发、部署简单、性能稳定和服务端工程实践。"
+            Scenario = "适合用于后端服务、网络工具、云原生组件、运维平台和高性能命令行工具。"
+        }
+    }
+    if ($language -eq "Rust") {
+        return @{
+            Feature = "以 Rust 语言实现，通常强调内存安全、运行性能、可靠性和系统级能力。"
+            Scenario = "适合用于系统工具、性能敏感服务、开发者工具、嵌入式或安全要求较高的工程。"
+        }
+    }
+    if ($language -eq "Python") {
+        return @{
+            Feature = "以 Python 生态为主，通常便于快速实验、自动化脚本、数据处理、AI 应用或服务原型开发。"
+            Scenario = "适合用于数据分析、机器学习、自动化任务、后端脚本、研究原型和内部效率工具。"
+        }
+    }
+    return @{
+        Feature = "该项目近期热度较高，主要价值可从仓库描述、语言生态、活跃度和社区关注度进一步判断。"
+        Scenario = "适合先作为技术调研对象，用于评估是否能引入到个人项目、团队工具链或产品原型中。"
+    }
+}
+
+function Add-RepoBlock {
+    param(
+        [System.Collections.Generic.List[string]]$Lines,
+        $Repo,
+        [string]$Category
+    )
+
+    $description = Clean-Text -Text $Repo.description
     $language = $Repo.language
     if (-not $language) {
         $language = "Unknown"
@@ -85,7 +176,13 @@ function Format-RepoLine {
     if ($Repo.pushed_at) {
         $pushed = $Repo.pushed_at.ToString().Substring(0, 10)
     }
-    return "- [$($Repo.full_name)]($($Repo.html_url)) - $description | stars $($Repo.stargazers_count) | forks $($Repo.forks_count) | $language | pushed $pushed"
+    $profile = Get-RepoProfile -Repo $Repo -Category $Category
+
+    $Lines.Add("- [$($Repo.full_name)]($($Repo.html_url))")
+    $Lines.Add("  - 项目描述：$description")
+    $Lines.Add("  - 功能特点：$($profile.Feature)")
+    $Lines.Add("  - 典型场景：$($profile.Scenario)")
+    $Lines.Add("  - 热度指标：``stars $($Repo.stargazers_count)`` ``forks $($Repo.forks_count)`` ``$language`` ``最近推送 $pushed``")
 }
 
 $Since = (Get-Date).ToUniversalTime().AddDays(-$Days).ToString("yyyy-MM-dd")
@@ -94,12 +191,13 @@ $GeneratedAt = $Now.ToString("yyyy-MM-dd HH:mm 'UTC'")
 $DateStamp = $Now.ToString("yyyy-MM-dd")
 
 $Lines = New-Object System.Collections.Generic.List[string]
-$Lines.Add("# GitHub Weekly Trending Report")
+$Lines.Add("# GitHub 热门项目周报")
 $Lines.Add("")
-$Lines.Add("Generated at: $GeneratedAt")
-$Lines.Add("Lookback window: last $Days days")
+$Lines.Add("生成时间：``$GeneratedAt``")
+$Lines.Add("统计窗口：最近 ``$Days`` 天")
 $Lines.Add("")
-$Lines.Add("Note: New hot is sorted by stars among recently created repositories. Active hot is sorted by stars among recently pushed repositories.")
+$Lines.Add("说明：``新晋热门`` 按最近创建且 star 较高的仓库排序；``活跃热门`` 按最近推送且总 star 较高的仓库排序。")
+$Lines.Add("每个项目的功能特点和典型场景由仓库描述、语言和 topic 规则化归纳生成，用于快速筛选，深度采用前建议继续查看源码和文档。")
 $Lines.Add("")
 
 foreach ($category in $Categories) {
@@ -116,35 +214,35 @@ foreach ($category in $Categories) {
 
     $Lines.Add("## $($category.Name)")
     $Lines.Add("")
-    $Lines.Add("### New hot")
+    $Lines.Add("### 新晋热门")
     $Lines.Add("")
     if ($newRepos.Count -gt 0) {
         foreach ($repo in $newRepos) {
-            $Lines.Add((Format-RepoLine -Repo $repo))
+            Add-RepoBlock -Lines $Lines -Repo $repo -Category $category.Name
         }
     }
     else {
-        $Lines.Add("- No matching repositories.")
+        $Lines.Add("- 暂无匹配项目。")
     }
     $Lines.Add("")
-    $Lines.Add("### Active hot")
+    $Lines.Add("### 活跃热门")
     $Lines.Add("")
     if ($activeRepos.Count -gt 0) {
         foreach ($repo in $activeRepos) {
-            $Lines.Add((Format-RepoLine -Repo $repo))
+            Add-RepoBlock -Lines $Lines -Repo $repo -Category $category.Name
         }
     }
     else {
-        $Lines.Add("- No matching repositories.")
+        $Lines.Add("- 暂无匹配项目。")
     }
     $Lines.Add("")
 }
 
-$Lines.Add("## Local usage")
+$Lines.Add("## 本地运行")
 $Lines.Add("")
 $Lines.Add("    .\scripts\generate_trending.ps1")
 $Lines.Add("")
-$Lines.Add("Optional: set GH_TOKEN or GITHUB_TOKEN to increase the GitHub API rate limit.")
+$Lines.Add("可选：设置 GH_TOKEN 或 GITHUB_TOKEN 以提高 GitHub API 额度。")
 $Lines.Add("")
 
 New-Item -ItemType Directory -Force -Path $ReportsDir | Out-Null
