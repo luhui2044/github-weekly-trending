@@ -1,6 +1,12 @@
 name: Weekly GitHub Trending Report
 
 on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - README.md
+      - reports/**
   schedule:
     # Every Monday 09:00 Asia/Shanghai.
     - cron: "0 1 * * 1"
