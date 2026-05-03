@@ -1,6 +1,6 @@
 # GitHub 热门项目周报
 
-生成时间：`2026-05-03 10:57 UTC`
+生成时间：`2026-05-03 10:59 UTC`
 统计窗口：最近 `7` 天
 
 说明：`新晋热门` 按最近创建且 star 较高的仓库排序；`活跃热门` 按最近推送且总 star 较高的仓库排序。
@@ -52,8 +52,8 @@
 
 - [perplexityai/gazelle_py](https://github.com/perplexityai/gazelle_py)
   - 项目描述：A Gazelle language extension for Python, paired with a Rust import-extractor that the plugin links in via cgo.
-  - 功能特点：围绕 AI/LLM 能力构建，重点解决模型调用、智能体编排、知识检索、推理服务或自动化工作流等问题。
-  - 典型场景：适合用于智能助手、企业知识库、研发自动化、AI 原型验证、模型应用集成等场景。
+  - 功能特点：以 Go 语言实现，通常强调高并发、部署简单、性能稳定和服务端工程实践。
+  - 典型场景：适合用于后端服务、网络工具、云原生组件、运维平台和高性能命令行工具。
   - 热度指标：`stars 6` `forks 1` `Go` `最近推送 2026-05-02`
 
 ### 活跃热门
@@ -65,13 +65,13 @@
   - 热度指标：`stars 72559` `forks 34543` `Python` `最近推送 2026-05-03`
 - [astral-sh/ty](https://github.com/astral-sh/ty)
   - 项目描述：An extremely fast Python type checker and language server, written in Rust.
-  - 功能特点：偏向后端服务与基础设施能力，通常关注 API、数据处理、服务治理、云原生部署或系统性能。
-  - 典型场景：适合用于业务后端、平台服务、微服务治理、数据接口、云原生应用和企业级系统集成。
+  - 功能特点：面向开发者效率提升，通常提供命令行工具、调试辅助、工程自动化、代码生成或本地开发体验优化。
+  - 典型场景：适合用于团队研发流程、CI/CD 辅助、本地开发提效、代码质量治理和工程脚手架建设。
   - 热度指标：`stars 18486` `forks 284` `Python` `最近推送 2026-05-01`
 - [nim-lang/Nim](https://github.com/nim-lang/Nim)
   - 项目描述：Nim is a statically typed compiled systems programming language. It combines successful concepts from mature languages like Python, Ada and Modula. Its design focuses on efficiency, expressiveness, and elegance (in that order of priority).
-  - 功能特点：该项目近期热度较高，主要价值可从仓库描述、语言生态、活跃度和社区关注度进一步判断。
-  - 典型场景：适合先作为技术调研对象，用于评估是否能引入到个人项目、团队工具链或产品原型中。
+  - 功能特点：面向开发者效率提升，通常提供命令行工具、调试辅助、工程自动化、代码生成或本地开发体验优化。
+  - 典型场景：适合用于团队研发流程、CI/CD 辅助、本地开发提效、代码质量治理和工程脚手架建设。
   - 热度指标：`stars 17962` `forks 1527` `Nim` `最近推送 2026-05-01`
 - [microsoft/mcp-for-beginners](https://github.com/microsoft/mcp-for-beginners)
   - 项目描述：This open-source curriculum introduces the fundamentals of Model Context Protocol (MCP) through real-world, cross-language examples in .NET, Java, TypeScript, JavaScript, Rust and Python. Designed for developers, it focuses on practical techniques for building modular, scalable, and secure AI workflows from session setup to service orchestration.
@@ -129,16 +129,16 @@
   - 热度指标：`stars 12` `forks 0` `Rust` `最近推送 2026-05-01`
 - [perplexityai/gazelle_py](https://github.com/perplexityai/gazelle_py)
   - 项目描述：A Gazelle language extension for Python, paired with a Rust import-extractor that the plugin links in via cgo.
-  - 功能特点：围绕 AI/LLM 能力构建，重点解决模型调用、智能体编排、知识检索、推理服务或自动化工作流等问题。
-  - 典型场景：适合用于智能助手、企业知识库、研发自动化、AI 原型验证、模型应用集成等场景。
+  - 功能特点：以 Go 语言实现，通常强调高并发、部署简单、性能稳定和服务端工程实践。
+  - 典型场景：适合用于后端服务、网络工具、云原生组件、运维平台和高性能命令行工具。
   - 热度指标：`stars 6` `forks 1` `Go` `最近推送 2026-05-02`
 
 ### 活跃热门
 
 - [astral-sh/ty](https://github.com/astral-sh/ty)
   - 项目描述：An extremely fast Python type checker and language server, written in Rust.
-  - 功能特点：偏向后端服务与基础设施能力，通常关注 API、数据处理、服务治理、云原生部署或系统性能。
-  - 典型场景：适合用于业务后端、平台服务、微服务治理、数据接口、云原生应用和企业级系统集成。
+  - 功能特点：面向开发者效率提升，通常提供命令行工具、调试辅助、工程自动化、代码生成或本地开发体验优化。
+  - 典型场景：适合用于团队研发流程、CI/CD 辅助、本地开发提效、代码质量治理和工程脚手架建设。
   - 热度指标：`stars 18486` `forks 284` `Python` `最近推送 2026-05-01`
 - [microsoft/mcp-for-beginners](https://github.com/microsoft/mcp-for-beginners)
   - 项目描述：This open-source curriculum introduces the fundamentals of Model Context Protocol (MCP) through real-world, cross-language examples in .NET, Java, TypeScript, JavaScript, Rust and Python. Designed for developers, it focuses on practical techniques for building modular, scalable, and secure AI workflows from session setup to service orchestration.
