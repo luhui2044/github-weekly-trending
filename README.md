@@ -1,6 +1,6 @@
 # GitHub 热门项目周报
 
-生成时间：`2026-10-05 06:27 UTC`
+生成时间：`2026-10-12 06:49 UTC`
 统计窗口：最近 `7` 天
 
 说明：`新晋热门` 按最近创建且 star 较高的仓库排序；`活跃热门` 按最近推送且总 star 较高的仓库排序。
@@ -50,11 +50,16 @@
 
 ### 新晋热门
 
-- [tvolkf-star/LLM-3D-Scene-Bridge](https://github.com/tvolkf-star/LLM-3D-Scene-Bridge)
-  - 项目描述：Working direct LLM modeling in Autodesk 3ds Max from natural-language descriptions via an ~8 KB Python/pymxs bridge — no agents, no specialized 3D models
+- [The-SEMQ-Group/semq](https://github.com/The-SEMQ-Group/semq)
+  - 项目描述：Deterministic symbolic codes for embedding vectors. Byte-identical across CPUs and languages, content-addressed, diffable and verifiable. C core with Python, Rust, Go and TypeScript bindings.
   - 功能特点：围绕 AI/LLM 能力构建，重点解决模型调用、智能体编排、知识检索、推理服务或自动化工作流等问题。
   - 典型场景：适合用于智能助手、企业知识库、研发自动化、AI 原型验证、模型应用集成等场景。
-  - 热度指标：`stars 9` `forks 0` `Python` `最近推送 2026-09-28`
+  - 热度指标：`stars 12` `forks 0` `Python` `最近推送 2026-10-10`
+- [ssmurfgg04-gif/cronlish](https://github.com/ssmurfgg04-gif/cronlish)
+  - 项目描述：Translate cron expressions into plain human language — tiny, deterministic, stdlib-only Python. AI agents explicitly welcome. 💰 $400 bounty open.
+  - 功能特点：围绕 AI/LLM 能力构建，重点解决模型调用、智能体编排、知识检索、推理服务或自动化工作流等问题。
+  - 典型场景：适合用于智能助手、企业知识库、研发自动化、AI 原型验证、模型应用集成等场景。
+  - 热度指标：`stars 6` `forks 15` `Python` `最近推送 2026-10-09`
 
 ### 活跃热门
 
@@ -62,33 +67,37 @@
   - 项目描述：The Python programming language
   - 功能特点：以 Python 生态为主，通常便于快速实验、自动化脚本、数据处理、AI 应用或服务原型开发。
   - 典型场景：适合用于数据分析、机器学习、自动化任务、后端脚本、研究原型和内部效率工具。
-  - 热度指标：`stars 77493` `forks 37359` `Python` `最近推送 2026-10-05`
-- [Asabeneh/30-Days-Of-Python](https://github.com/Asabeneh/30-Days-Of-Python)
-  - 项目描述：The 30 Days of Python programming challenge is a step-by-step guide to learn the Python programming language in 30 days. This challenge may take more than 100 days. Follow your own pace. These videos may help too: https://www.youtube.com/channel/UC7PNRuno1rzYPb1xLa4yktw
-  - 功能特点：聚焦前端界面与交互开发，常见特点是组件化、工程化、可视化呈现或现代 Web 应用体验优化。
-  - 典型场景：适合用于管理后台、SaaS 产品、官网、可视化大屏、交互式工具和前端组件库建设。
-  - 热度指标：`stars 75253` `forks 13679` `Python` `最近推送 2026-09-30`
-- [explosion/spaCy](https://github.com/explosion/spaCy)
-  - 项目描述：💫 Industrial-strength Natural Language Processing (NLP) in Python
-  - 功能特点：围绕 AI/LLM 能力构建，重点解决模型调用、智能体编排、知识检索、推理服务或自动化工作流等问题。
-  - 典型场景：适合用于智能助手、企业知识库、研发自动化、AI 原型验证、模型应用集成等场景。
-  - 热度指标：`stars 33938` `forks 4734` `Python` `最近推送 2026-09-30`
+  - 热度指标：`stars 77612` `forks 38100` `Python` `最近推送 2026-10-12`
 - [astral-sh/ty](https://github.com/astral-sh/ty)
   - 项目描述：An extremely fast Python type checker and language server, written in Rust.
   - 功能特点：面向开发者效率提升，通常提供命令行工具、调试辅助、工程自动化、代码生成或本地开发体验优化。
   - 典型场景：适合用于团队研发流程、CI/CD 辅助、本地开发提效、代码质量治理和工程脚手架建设。
-  - 热度指标：`stars 19803` `forks 336` `Python` `最近推送 2026-10-04`
+  - 热度指标：`stars 19848` `forks 339` `Python` `最近推送 2026-10-10`
 - [nim-lang/Nim](https://github.com/nim-lang/Nim)
   - 项目描述：Nim is a statically typed compiled systems programming language. It combines successful concepts from mature languages like Python, Ada and Modula. Its design focuses on efficiency, expressiveness, and elegance (in that order of priority).
   - 功能特点：面向开发者效率提升，通常提供命令行工具、调试辅助、工程自动化、代码生成或本地开发体验优化。
   - 典型场景：适合用于团队研发流程、CI/CD 辅助、本地开发提效、代码质量治理和工程脚手架建设。
-  - 热度指标：`stars 18252` `forks 1561` `Nim` `最近推送 2026-10-05`
+  - 热度指标：`stars 18265` `forks 1564` `Nim` `最近推送 2026-10-12`
+- [microsoft/mcp-for-beginners](https://github.com/microsoft/mcp-for-beginners)
+  - 项目描述：This open-source curriculum introduces the fundamentals of Model Context Protocol (MCP) through real-world, cross-language examples in .NET, Java, TypeScript, JavaScript, Rust and Python. Designed for developers, it focuses on practical techniques for building modular, scalable, and secure AI workflows from session setup to service orchestration.
+  - 功能特点：围绕 AI/LLM 能力构建，重点解决模型调用、智能体编排、知识检索、推理服务或自动化工作流等问题。
+  - 典型场景：适合用于智能助手、企业知识库、研发自动化、AI 原型验证、模型应用集成等场景。
+  - 热度指标：`stars 17430` `forks 5647` `Jupyter Notebook` `最近推送 2026-10-12`
+- [NVIDIA/TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM)
+  - 项目描述：TensorRT LLM provides users with an easy-to-use Python API to define Large Language Models (LLMs) and supports state-of-the-art optimizations to perform inference efficiently on NVIDIA GPUs. TensorRT LLM also contains components to create Python and C++ runtimes that orchestrate the inference execution in a performant way.
+  - 功能特点：围绕 AI/LLM 能力构建，重点解决模型调用、智能体编排、知识检索、推理服务或自动化工作流等问题。
+  - 典型场景：适合用于智能助手、企业知识库、研发自动化、AI 原型验证、模型应用集成等场景。
+  - 热度指标：`stars 14795` `forks 2809` `Python` `最近推送 2026-10-12`
 
 ## Go
 
 ### 新晋热门
 
-- 暂无匹配项目。
+- [The-SEMQ-Group/semq](https://github.com/The-SEMQ-Group/semq)
+  - 项目描述：Deterministic symbolic codes for embedding vectors. Byte-identical across CPUs and languages, content-addressed, diffable and verifiable. C core with Python, Rust, Go and TypeScript bindings.
+  - 功能特点：围绕 AI/LLM 能力构建，重点解决模型调用、智能体编排、知识检索、推理服务或自动化工作流等问题。
+  - 典型场景：适合用于智能助手、企业知识库、研发自动化、AI 原型验证、模型应用集成等场景。
+  - 热度指标：`stars 12` `forks 0` `Python` `最近推送 2026-10-10`
 
 ### 活跃热门
 
@@ -96,33 +105,47 @@
   - 项目描述：The Go programming language
   - 功能特点：以 Go 语言实现，通常强调高并发、部署简单、性能稳定和服务端工程实践。
   - 典型场景：适合用于后端服务、网络工具、云原生组件、运维平台和高性能命令行工具。
-  - 热度指标：`stars 139254` `forks 21313` `Go` `最近推送 2026-10-05`
+  - 热度指标：`stars 139211` `forks 22064` `Go` `最近推送 2026-10-10`
 - [beego/beego](https://github.com/beego/beego)
   - 项目描述：beego is an open-source, high-performance web framework for the Go programming language.
   - 功能特点：以 Go 语言实现，通常强调高并发、部署简单、性能稳定和服务端工程实践。
   - 典型场景：适合用于后端服务、网络工具、云原生组件、运维平台和高性能命令行工具。
-  - 热度指标：`stars 32429` `forks 5572` `Go` `最近推送 2026-10-04`
+  - 热度指标：`stars 32420` `forks 5570` `Go` `最近推送 2026-10-05`
 - [go-delve/delve](https://github.com/go-delve/delve)
   - 项目描述：Delve is a debugger for the Go programming language.
   - 功能特点：面向开发者效率提升，通常提供命令行工具、调试辅助、工程自动化、代码生成或本地开发体验优化。
   - 典型场景：适合用于团队研发流程、CI/CD 辅助、本地开发提效、代码质量治理和工程脚手架建设。
-  - 热度指标：`stars 24938` `forks 2216` `Go` `最近推送 2026-09-29`
+  - 热度指标：`stars 24945` `forks 2218` `Go` `最近推送 2026-10-07`
 - [grpc/grpc-go](https://github.com/grpc/grpc-go)
   - 项目描述：The Go language implementation of gRPC. HTTP/2 based RPC
   - 功能特点：偏向后端服务与基础设施能力，通常关注 API、数据处理、服务治理、云原生部署或系统性能。
   - 典型场景：适合用于业务后端、平台服务、微服务治理、数据接口、云原生应用和企业级系统集成。
-  - 热度指标：`stars 23090` `forks 4782` `Go` `最近推送 2026-10-01`
+  - 热度指标：`stars 23090` `forks 4792` `Go` `最近推送 2026-10-10`
 - [qax-os/excelize](https://github.com/qax-os/excelize)
   - 项目描述：Go language library for reading and writing Microsoft Excel™ (XLAM / XLSM / XLSX / XLTM / XLTX) spreadsheets
   - 功能特点：围绕 AI/LLM 能力构建，重点解决模型调用、智能体编排、知识检索、推理服务或自动化工作流等问题。
   - 典型场景：适合用于智能助手、企业知识库、研发自动化、AI 原型验证、模型应用集成等场景。
-  - 热度指标：`stars 20964` `forks 1965` `Go` `最近推送 2026-10-03`
+  - 热度指标：`stars 20982` `forks 1968` `Go` `最近推送 2026-10-11`
 
 ## Rust
 
 ### 新晋热门
 
-- 暂无匹配项目。
+- [The-SEMQ-Group/semq](https://github.com/The-SEMQ-Group/semq)
+  - 项目描述：Deterministic symbolic codes for embedding vectors. Byte-identical across CPUs and languages, content-addressed, diffable and verifiable. C core with Python, Rust, Go and TypeScript bindings.
+  - 功能特点：围绕 AI/LLM 能力构建，重点解决模型调用、智能体编排、知识检索、推理服务或自动化工作流等问题。
+  - 典型场景：适合用于智能助手、企业知识库、研发自动化、AI 原型验证、模型应用集成等场景。
+  - 热度指标：`stars 12` `forks 0` `Python` `最近推送 2026-10-10`
+- [sbaruwal/orbvane](https://github.com/sbaruwal/orbvane)
+  - 项目描述：A native code editor for Mac, written in Rust. Language servers, debugging, git, terminals, tests and extensions, drawn by its own GPU toolkit. No web view, no telemetry.
+  - 功能特点：面向开发者效率提升，通常提供命令行工具、调试辅助、工程自动化、代码生成或本地开发体验优化。
+  - 典型场景：适合用于团队研发流程、CI/CD 辅助、本地开发提效、代码质量治理和工程脚手架建设。
+  - 热度指标：`stars 10` `forks 1` `Rust` `最近推送 2026-10-11`
+- [orestesgaolin/dartr](https://github.com/orestesgaolin/dartr)
+  - 项目描述：Rust port of the Dart analyzer (dart analyze, language server), differential-tested against Dart SDK 3.13.3
+  - 功能特点：面向开发者效率提升，通常提供命令行工具、调试辅助、工程自动化、代码生成或本地开发体验优化。
+  - 典型场景：适合用于团队研发流程、CI/CD 辅助、本地开发提效、代码质量治理和工程脚手架建设。
+  - 热度指标：`stars 9` `forks 1` `Rust` `最近推送 2026-10-12`
 
 ### 活跃热门
 
@@ -130,27 +153,27 @@
   - 项目描述：An extremely fast Python type checker and language server, written in Rust.
   - 功能特点：面向开发者效率提升，通常提供命令行工具、调试辅助、工程自动化、代码生成或本地开发体验优化。
   - 典型场景：适合用于团队研发流程、CI/CD 辅助、本地开发提效、代码质量治理和工程脚手架建设。
-  - 热度指标：`stars 19803` `forks 336` `Python` `最近推送 2026-10-04`
+  - 热度指标：`stars 19848` `forks 339` `Python` `最近推送 2026-10-10`
 - [microsoft/mcp-for-beginners](https://github.com/microsoft/mcp-for-beginners)
   - 项目描述：This open-source curriculum introduces the fundamentals of Model Context Protocol (MCP) through real-world, cross-language examples in .NET, Java, TypeScript, JavaScript, Rust and Python. Designed for developers, it focuses on practical techniques for building modular, scalable, and secure AI workflows from session setup to service orchestration.
   - 功能特点：围绕 AI/LLM 能力构建，重点解决模型调用、智能体编排、知识检索、推理服务或自动化工作流等问题。
   - 典型场景：适合用于智能助手、企业知识库、研发自动化、AI 原型验证、模型应用集成等场景。
-  - 热度指标：`stars 17395` `forks 5637` `Jupyter Notebook` `最近推送 2026-10-01`
+  - 热度指标：`stars 17430` `forks 5647` `Jupyter Notebook` `最近推送 2026-10-12`
 - [xberg-io/xberg](https://github.com/xberg-io/xberg)
   - 项目描述：Polyglot document intelligence with a Rust core: extract text, metadata, images, tables, and structured data from 106 formats across 140 file extensions, plus code intelligence for 371 languages. Fifteen bindings, with CLI, REST API, and MCP server.
   - 功能特点：围绕 AI/LLM 能力构建，重点解决模型调用、智能体编排、知识检索、推理服务或自动化工作流等问题。
   - 典型场景：适合用于智能助手、企业知识库、研发自动化、AI 原型验证、模型应用集成等场景。
-  - 热度指标：`stars 9377` `forks 588` `Rust` `最近推送 2026-10-05`
+  - 热度指标：`stars 9402` `forks 590` `Rust` `最近推送 2026-10-11`
 - [rust-embedded/awesome-embedded-rust](https://github.com/rust-embedded/awesome-embedded-rust)
   - 项目描述：Curated list of resources for Embedded and Low-level development in the Rust programming language
   - 功能特点：该项目近期热度较高，主要价值可从仓库描述、语言生态、活跃度和社区关注度进一步判断。
   - 典型场景：适合先作为技术调研对象，用于评估是否能引入到个人项目、团队工具链或产品原型中。
-  - 热度指标：`stars 8127` `forks 502` `Unknown` `最近推送 2026-10-02`
+  - 热度指标：`stars 8137` `forks 504` `Unknown` `最近推送 2026-10-09`
 - [flyteorg/flyte](https://github.com/flyteorg/flyte)
   - 项目描述：Type-safe, distributed orchestration of agents, ML pipelines, and real-time inference on your k8s — in pure Python with async/await, also other languages (rust, go and ts)
   - 功能特点：围绕 AI/LLM 能力构建，重点解决模型调用、智能体编排、知识检索、推理服务或自动化工作流等问题。
   - 典型场景：适合用于智能助手、企业知识库、研发自动化、AI 原型验证、模型应用集成等场景。
-  - 热度指标：`stars 7628` `forks 898` `Go` `最近推送 2026-10-02`
+  - 热度指标：`stars 7681` `forks 901` `Go` `最近推送 2026-10-12`
 
 ## 本地运行
 
